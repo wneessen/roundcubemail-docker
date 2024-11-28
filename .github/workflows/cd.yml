@@ -33,7 +33,7 @@ jobs:
         with:
           push: true
           platforms: linux/amd64
-          dockerfile: ./fpm-alpine/Dockerfile
+          file: ./fpm-alpine/Dockerfile
           tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ github.sha }}
