@@ -2,14 +2,10 @@
 # set -eu
 
 declare -A CMD=(
-	[apache]='apache2-foreground'
-	[fpm]='php-fpm'
 	[fpm-alpine]='php-fpm'
 )
 
 declare -A BASE=(
-	[apache]='debian'
-	[fpm]='debian'
 	[fpm-alpine]='alpine'
 )
 
@@ -18,7 +14,7 @@ VERSION="${1:-$(curl -fsS https://roundcube.net/VERSION.txt)}"
 #set -x
 echo "Generating files for version $VERSION..."
 
-for variant in apache fpm fpm-alpine; do
+for variant in fpm-alpine; do
 	dir="$variant"
 	mkdir -p "$dir"
 
@@ -33,10 +29,4 @@ for variant in apache fpm fpm-alpine; do
 
 	echo "✓ Wrote $dir/Dockerfile"
 done
-
-# Use perl to avoid problems with BSD vs. GNU sed, which have incompatible
-# argument syntax for editing files in-place.
-perl -pi -e "s/1\.[0-9]\.[0-9]+-/${VERSION}-/" .github/workflows/build.yml
-echo "Updating version in build.yml workflow"
-
 echo "Done."
