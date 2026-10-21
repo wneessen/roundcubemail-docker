@@ -1,6 +1,6 @@
 FROM php:8.3-fpm-alpine
-LABEL maintainer="Thomas Bruederli <thomas@roundcube.net>"
-LABEL org.opencontainers.image.source="https://github.com/roundcube/roundcubemail-docker"
+LABEL maintainer="Winni Neessen <wn@neessen.dev>"
+LABEL org.opencontainers.image.source="https://github.com/wneessen/roundcubemail-docker"
 
 RUN set -ex; \
 	if [ "fpm-alpine" = "apache" ]; then a2enmod rewrite; fi; \
